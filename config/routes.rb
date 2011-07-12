@@ -1,10 +1,8 @@
 WooFood::Application.routes.draw do
   
   resources :items
-
-  resources :menu
-  
-  match 'scrape' => 'items#scrape'
+    
+  root :to => "home#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
