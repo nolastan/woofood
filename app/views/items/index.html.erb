@@ -1,0 +1,55 @@
+<h1>Listing items</h1>
+
+<table>
+  <tr>
+    <th>New</th>
+    <th>Title</th>
+    <th>Last</th>
+    <th>Created_at</th>
+    <th>Group</th>
+    <th>Location</th>
+    <th>Calories</th>
+    <th>Fat calories</th>
+    <th>Fat</th>
+    <th>Sat fat</th>
+    <th>Trans fat</th>
+    <th>Cholesterol</th>
+    <th>Sodium</th>
+    <th>Carb</th>
+    <th>Fiber</th>
+    <th>Sugar</th>
+    <th>Protein</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.new %></td>
+    <td><%= item.title %></td>
+    <td><%= item.last %></td>
+    <td><%= item.created_at %></td>
+    <td><%= item.group %></td>
+    <td><%= item.location %></td>
+    <td><%= item.calories %></td>
+    <td><%= item.fat_calories %></td>
+    <td><%= item.fat %></td>
+    <td><%= item.sat_fat %></td>
+    <td><%= item.trans_fat %></td>
+    <td><%= item.cholesterol %></td>
+    <td><%= item.sodium %></td>
+    <td><%= item.carb %></td>
+    <td><%= item.fiber %></td>
+    <td><%= item.sugar %></td>
+    <td><%= item.protein %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_item_path %>

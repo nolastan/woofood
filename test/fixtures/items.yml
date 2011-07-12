@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  group: MyString
+  location: MyString
+  calories: 1
+  fat_calories: 1
+  fat: 1
+  sat_fat: 1
+  trans_fat: 1
+  cholesterol: 1
+  sodium: 1
+  carb: 1
+  fiber: 1
+  sugar: 1
+  protein: 1
+
+two:
+  title: MyString
+  group: MyString
+  location: MyString
+  calories: 1
+  fat_calories: 1
+  fat: 1
+  sat_fat: 1
+  trans_fat: 1
+  cholesterol: 1
+  sodium: 1
+  carb: 1
+  fiber: 1
+  sugar: 1
+  protein: 1
