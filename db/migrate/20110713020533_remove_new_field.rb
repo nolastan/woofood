@@ -17,7 +17,7 @@ class RemoveNewField < ActiveRecord::Migration
       t.decimal :fiber
       t.decimal :sugar
       t.decimal :protein
-      t.string :last
+      t.date :last
       t.string :special
 
       t.timestamps
