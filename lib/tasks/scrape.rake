@@ -1,6 +1,6 @@
 task :scrape => :environment do
   require 'open-uri'
-  doc = Nokogiri::HTML(open("http://menus.wustl.edu/shortmenu.asp?sName=Dining+Services&locationNum=05&locationName=%3CBR%3EDUC%3A+%3Cbr%3E+-+1853+Diner+-+Delicioso+-+Trattoria+Verde+-+Wash+U+Wok&naFlag=1"))
+  doc = Nokogiri::HTML(open("http://menus.wustl.edu/shortmenu.asp?sName=Dining+Services&locationNum=05&locationName=%3CBR%3EDUC%3A+%3Cbr%3E+-+1853+Diner+-+Delicioso+-+Trattoria+Verde+-+Wash+U+Wok&naFlag=1&WeeksMenus=This+Week%27s+Menus&myaction=read&dtdate=7%2F13%2F2011"))
   doc.css('table td[width="30%"]').each do |location|
     location_name = location.css('div.shortmenumeals').text
     location.css('.shortmenurecipes a').each do |row|
