@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110712215859) do
+ActiveRecord::Schema.define(:version => 20110713062919) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -27,7 +27,25 @@ ActiveRecord::Schema.define(:version => 20110712215859) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-# Could not dump table "items" because of following StandardError
-#   Unknown type 'bool' for column 'new'
+  create_table "items", :force => true do |t|
+    t.string   "title"
+    t.string   "group"
+    t.string   "location"
+    t.decimal  "calories"
+    t.decimal  "fat_calories"
+    t.decimal  "fat"
+    t.decimal  "sat_fat"
+    t.decimal  "trans_fat"
+    t.decimal  "cholesterol"
+    t.decimal  "sodium"
+    t.decimal  "carb"
+    t.decimal  "fiber"
+    t.decimal  "sugar"
+    t.decimal  "protein"
+    t.date     "last",         :limit => 255
+    t.string   "special"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

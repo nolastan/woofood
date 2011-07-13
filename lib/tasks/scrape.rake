@@ -1,24 +1,30 @@
 task :scrape => :environment do
   require 'open-uri'
-  doc = Nokogiri::HTML(open("http://menus.wustl.edu/shortmenu.asp?sName=Dining+Services&locationNum=05&locationName=%3CBR%3EDUC%3A+%3Cbr%3E+-+1853+Diner+-+Delicioso+-+Trattoria+Verde+-+Wash+U+Wok&naFlag=1&WeeksMenus=This+Week%27s+Menus&myaction=read&dtdate=7%2F13%2F2011"))
+  
+# @TODO Make these dynamic
+  scrape_date=Date.tomorrow
+  locationNum = '05'
+
+  dtdate = scrape_date.strftime('%m')+'%2F'+scrape_date.strftime('%e')+'%2F'+scrape_date.strftime('%Y')
+  doc = Nokogiri::HTML(open("http://menus.wustl.edu/shortmenu.asp?locationNum="+locationNum+"&dtdate="+dtdate))
   doc.css('table td[width="30%"]').each do |location|
     location_name = location.css('div.shortmenumeals').text
     location.css('.shortmenurecipes a').each do |row|
       
       title = row.text
             
-      # Determine "new" status of item at location
+      # Determine "special" status of item at location
       if(Item.where(:title => title, :location => location_name).exists?)
         item = Item.find(:first, :conditions => ["title = ? and location = ?", title, location_name])
-        if(item.last < DateTime.yesterday)
-          item.new = true #item is special
+        if(item.last < scrape_date-1)
+          item.special = true #item is special
         else 
-          item.new = false # item is old
+          item.special = false # item is old
         end
         
-      else #item is new
+      else #item is special
         item = Item.new(:title => title)
-        item.new = true
+        item.special = true
                
         # Get nutritional info
         nutrition = Nokogiri::HTML(open('http://menus.wustl.edu/'+row['href']))
@@ -37,7 +43,7 @@ task :scrape => :environment do
         item.group = ''
       end
            
-      item.last = DateTime.now
+      item.last = scrape_date
       item.save
     end
   end
