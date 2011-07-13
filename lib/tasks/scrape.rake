@@ -2,7 +2,7 @@ task :scrape => :environment do
   require 'open-uri'
   
 # @TODO Make these dynamic
-  scrape_date=Date.yesterday
+  scrape_date=Date.today
   locationNum = '05'
 
   dtdate = scrape_date.strftime('%m')+'%2F'+scrape_date.strftime('%e')+'%2F'+scrape_date.strftime('%Y')
