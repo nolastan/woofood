@@ -1,5 +1,5 @@
 <h1>WooFood</h1>
-<h2>Today's specials at Wash U</h2>
+<h2>Tomorrow's specials at Wash U</h2>
 <ul>
 <% @items.each do |item| %>
 	<li><b><%=item.location%></b>: <%=link_to item.title, item_path(item)%> <i><%=item.calories.round%> calories</i></li>
